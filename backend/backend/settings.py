@@ -67,11 +67,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsPostCsrfMiddleware',
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:4200',  # Your Angular frontend URL
+    'http://localhost:4200', 
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200", 
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -160,4 +163,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS (Cross-Origin Resource Sharing) settings (optional)
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
+
 
