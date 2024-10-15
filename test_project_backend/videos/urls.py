@@ -1,10 +1,12 @@
-from django.urls import path, include
+from django.urls import path
 from rest_framework.routers import DefaultRouter
-from .views import VideoViewSet
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+app_name = 'videos'
 
 router = DefaultRouter()
-router.register(r'videos', VideoViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
