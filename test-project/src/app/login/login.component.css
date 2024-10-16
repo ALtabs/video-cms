@@ -1,0 +1,83 @@
+/* Add this to your styles.css or the component's styles */
+.container {
+  max-width: 400px; /* Set a max width for the form */
+  margin: 50px auto; /* Center the form horizontally with margin on top */
+  padding: 20px; /* Add padding around the container */
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Space between form groups */
+}
+
+label {
+  font-weight: bold; /* Make the label bold */
+  margin-bottom: 5px; /* Space below the label */
+  display: block; /* Make label block to occupy full width */
+}
+
+input.form-control {
+  width: 100%; /* Full width for inputs */
+  height: 40px; /* Set a specific height for the input fields */
+  border: 1px solid #ced4da; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding inside the input */
+  box-sizing: border-box; /* Include padding in total width/height */
+}
+
+input.form-control:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Shadow effect on focus */
+}
+
+.btn-primary {
+  width: 100%; /* Full width for the login button */
+  padding: 10px; /* Add padding */
+  background-color: #007bff; /* Primary button color */
+  border: none; /* No border */
+  color: white; /* White text color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-link {
+  display: block; /* Make Sign Up button block level */
+  text-align: center; /* Center the text */
+  margin-top: 10px; /* Space above the Sign Up link */
+  width: 100%; /* Full width for the login button */
+  padding: 10px; /* Add padding */
+  background-color: #575858; /* Primary button color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+
+.text-danger {
+  color: #dc3545; /* Red color for error messages */
+  font-size: 0.875em; /* Slightly smaller font size */
+}
+
+.sign-up-prompt {
+  margin-top: 15px; /* Space above the Sign Up prompt */
+  text-align: center; /* Center the text */
+}
+
+.sign-up-prompt p {
+  margin: 0; /* Remove default margin from paragraph */
+}
+
+.btn-link {
+  color: #ffffff; /* Primary link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.btn-link:hover {
+  background-color: #848586; /* Darker blue on hover */
+}
+
