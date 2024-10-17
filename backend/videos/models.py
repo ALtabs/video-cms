@@ -6,6 +6,7 @@ class Video(models.Model):
     description = models.TextField(blank=True, null=True)
     video_file_url = models.URLField() 
     uploader = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title

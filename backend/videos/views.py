@@ -20,14 +20,18 @@ class VideoViewSet(viewsets.ModelViewSet):
     serializer_class = VideoSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def perform_create(self, serializer):
-        # Save the video instance
-        serializer.save(uploader=self.request.user)
+    def get_serializer_context(self):
+        # Override to add the request to the context
+        context = super().get_serializer_context()
+        context.update({"request": self.request})
+        return context
+
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
+
 
 class LoginView(generics.GenericAPIView):
     permission_classes = [permissions.AllowAny]

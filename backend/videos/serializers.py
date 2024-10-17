@@ -12,25 +12,29 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User(**validated_data)
-        user.set_password(validated_data['password'])  # Hash the password
+        user.set_password(validated_data['password'])
         user.save()
         return user
     
 class VideoSerializer(serializers.ModelSerializer):
+    uploader_username = serializers.CharField(source='uploader.username', read_only=True)
+
     class Meta:
         model = Video
-        fields = ['id', 'title', 'description', 'video_file_url', 'uploader']
+        fields = ['id', 'title', 'description', 'video_file_url', 'uploader_username', 'created_at']
+        read_only_fields = ['uploader', 'video_file_url'] 
 
     def create(self, validated_data):
-        video_file = validated_data.pop('video_file', None)
-        
-        # Upload the video file to Google Drive
-        if video_file:
-            video_file_url = upload_file_to_drive(video_file.name, video_file.path)
-            validated_data['video_file_url'] = video_file_url
+        video_file = self.context['request'].data.get('video_file', None)
 
-        # Automatically set the uploader to the current user
+        if video_file:
+            video_file_url = upload_file_to_drive(video_file.name, video_file)
+            validated_data['video_file_url'] = video_file_url
+        else:
+            raise serializers.ValidationError("Video file is required.")
+
+        # Assign the uploader from the request user
         request = self.context.get('request')
         validated_data['uploader'] = request.user
-        
+
         return super().create(validated_data)
