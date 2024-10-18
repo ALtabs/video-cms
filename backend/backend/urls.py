@@ -15,11 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from videos.views import LoginView, VideoViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('videos.urls')),
-    path('login/', LoginView.as_view(), name='login'),
-    path('videos-list/', VideoViewSet.as_view(), name='videos-list'),
 ]
