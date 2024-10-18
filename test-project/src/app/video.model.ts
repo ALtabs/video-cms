@@ -2,7 +2,8 @@ export interface Video {
   id: number;
   title: string;
   description: string;
-  file: string;
+  video_file_url: string;
   created_at: string;
-  user: number; // Assuming the user is represented by an ID
+  uploader_username: string;
+  thumbnail_url: string;
 }

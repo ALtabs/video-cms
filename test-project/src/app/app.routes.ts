@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'videos', component: VideoListComponent },
+  { path: 'videos-list', component: VideoListComponent },
   { path: 'upload', component: VideoUploadComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },

@@ -21,7 +21,7 @@ class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video
-        fields = ['id', 'title', 'description', 'video_file_url', 'uploader_username', 'created_at']
+        fields = ['id', 'title', 'description', 'video_file_url', 'uploader_username', 'created_at', 'thumbnail_url']
         read_only_fields = ['uploader', 'video_file_url'] 
 
     def create(self, validated_data):
@@ -29,7 +29,9 @@ class VideoSerializer(serializers.ModelSerializer):
 
         if video_file:
             video_file_url = upload_file_to_drive(video_file.name, video_file)
-            validated_data['video_file_url'] = video_file_url
+            print('xxxxxxxxxxx', video_file_url)
+            validated_data['video_file_url'] = video_file_url['video_url']
+            validated_data['thumbnail_url'] = video_file_url['thumbnail_url']
         else:
             raise serializers.ValidationError("Video file is required.")
 
