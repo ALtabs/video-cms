@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zv9y$)r9l7tum+@mbas0am(!n0tppjg!%eh+irtogh*akv9%e@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'video-cms-1.onrender.com',
@@ -155,6 +155,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -169,5 +170,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS (Cross-Origin Resource Sharing) settings (optional)
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_ALL_ORIGINS = True
-
+#gunicorn videos.wsgi:application --bind 0.0.0.0:8001
+# gunicorn videos.wsgi:application --bind 127.0.0.1:8001
 

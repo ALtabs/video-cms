@@ -29,6 +29,7 @@ class VideoSerializer(serializers.ModelSerializer):
 
         if video_file:
             video_file_url = upload_file_to_drive(video_file.name, video_file)
+            print('xxxxxxxxxxx', video_file_url)
             validated_data['video_file_url'] = video_file_url['video_url']
             validated_data['thumbnail_url'] = video_file_url['thumbnail_url']
         else:
