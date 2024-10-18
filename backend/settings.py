@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from decouple import config
 
 # Load environment variables from .env file
 load_dotenv()
@@ -35,6 +36,7 @@ ALLOWED_HOSTS = [
     'angular-cms-omega.vercel.app',
     '127.0.0.1',
     'localhost',
+    'video-cms-production.up.railway.app'
     ]
 
 # Insert Applications you want to be documented
@@ -75,11 +77,17 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:4200', 
+    'http://localhost:4200',
+    'https://video-cms-production.up.railway.app',
+    'https://video-cms-1.onrender.com',
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200", 
+    "http://localhost:4200",
+    'https://video-cms-production.up.railway.app',
+    'https://video-cms-1.onrender.com',
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -106,17 +114,20 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+import os
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test_project_db',
-        'USER': 'testuser',
-        'PASSWORD': 'testuser',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('PGDATABASE', 'default_db_name'),  # Your database name
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'your_password'),
+        'HOST': os.environ.get('PGHOST', 'localhost'),
+        'PORT': os.environ.get('PGPORT', '5432'),
     }
 }
 
+#pg_dump -U testuser -h localhost -p 5432 test_project_db > database_dump.sql
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

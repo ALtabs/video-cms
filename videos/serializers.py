@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from rest_framework import serializers
 
 from .utils import upload_file_to_drive
@@ -15,7 +16,17 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
-    
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, data):
+        user = authenticate(**data)
+        if user is None:
+            raise serializers.ValidationError("Invalid username or password.")
+        return data
+ 
 class VideoSerializer(serializers.ModelSerializer):
     uploader_username = serializers.CharField(source='uploader.username', read_only=True)
 
@@ -29,7 +40,6 @@ class VideoSerializer(serializers.ModelSerializer):
 
         if video_file:
             video_file_url = upload_file_to_drive(video_file.name, video_file)
-            print('xxxxxxxxxxx', video_file_url)
             validated_data['video_file_url'] = video_file_url['video_url']
             validated_data['thumbnail_url'] = video_file_url['thumbnail_url']
         else:
