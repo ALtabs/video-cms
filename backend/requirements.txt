@@ -22,7 +22,7 @@ imageio==2.31.2
 imageio-ffmpeg==0.5.1
 importlib-metadata==6.7.0
 moviepy==1.0.3
-numpy==1.21.0
+numpy==1.21.6
 oauthlib==3.2.2
 Pillow==9.5.0
 platformdirs==4.0.0
