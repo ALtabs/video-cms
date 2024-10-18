@@ -79,7 +79,11 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
     'https://video-cms-production.up.railway.app',
+<<<<<<< Updated upstream
+    'https://video-cms-1.onrender.com/',
+=======
     'https://video-cms-1.onrender.com',
+>>>>>>> Stashed changes
     'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
 ]
 
@@ -114,11 +118,36 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+<<<<<<< Updated upstream
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'test_project_db',
+#         'USER': 'testuser',
+#         'PASSWORD': 'testuser',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+from decouple import config
+=======
 import os
+>>>>>>> Stashed changes
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+<<<<<<< Updated upstream
+        'NAME': config('DATABASE_NAME'),
+        'USER': config('DATABASE_USER'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': config('DATABASE_PORT'),
+    }
+}
+
+=======
         'NAME': os.environ.get('PGDATABASE', 'default_db_name'),  # Your database name
         'USER': os.environ.get('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'your_password'),
@@ -129,6 +158,7 @@ DATABASES = {
 
 #pg_dump -U testuser -h localhost -p 5432 test_project_db > database_dump.sql
 
+>>>>>>> Stashed changes
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -166,6 +196,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# Set STATIC_ROOT for collecting static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
