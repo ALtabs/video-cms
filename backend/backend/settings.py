@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
     'angular-cms-omega.vercel.app',
     '127.0.0.1',
     'localhost',
+    'video-cms-production.up.railway.app'
     ]
 
 # Insert Applications you want to be documented
@@ -75,11 +76,17 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:4200', 
+    'http://localhost:4200',
+    'https://video-cms-production.up.railway.app/',
+    'video-cms-1.onrender.com',
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app/'
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200", 
+    "http://localhost:4200",
+    'https://video-cms-production.up.railway.app/',
+    'video-cms-1.onrender.com',
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app/'
 ]
 
 ROOT_URLCONF = 'backend.urls'
