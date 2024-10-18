@@ -27,6 +27,7 @@ export class VideoListComponent implements AfterViewInit {
 
   selectedVideo: Video | null = null;
 
+
   @ViewChild('videoPlayer', { static: false }) videoPlayer!: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit() {
