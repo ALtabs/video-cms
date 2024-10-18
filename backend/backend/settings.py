@@ -77,16 +77,16 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
-    'https://video-cms-production.up.railway.app/',
-    'video-cms-1.onrender.com',
-    'https://angular-ocuztdzt0-almahsols-projects.vercel.app/'
+    'https://video-cms-production.up.railway.app',
+    'https://video-cms-1.onrender.com/',
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
-    'https://video-cms-production.up.railway.app/',
-    'video-cms-1.onrender.com',
-    'https://angular-ocuztdzt0-almahsols-projects.vercel.app/'
+    'https://video-cms-production.up.railway.app',
+    'https://video-cms-1.onrender.com',
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
 ]
 
 ROOT_URLCONF = 'backend.urls'
