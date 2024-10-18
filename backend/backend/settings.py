@@ -79,11 +79,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
     'https://video-cms-production.up.railway.app',
-<<<<<<< Updated upstream
-    'https://video-cms-1.onrender.com/',
-=======
     'https://video-cms-1.onrender.com',
->>>>>>> Stashed changes
     'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
 ]
 
@@ -118,27 +114,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-<<<<<<< Updated upstream
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'test_project_db',
-#         'USER': 'testuser',
-#         'PASSWORD': 'testuser',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
-from decouple import config
-=======
 import os
->>>>>>> Stashed changes
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-<<<<<<< Updated upstream
         'NAME': config('DATABASE_NAME'),
         'USER': config('DATABASE_USER'),
         'PASSWORD': config('DATABASE_PASSWORD'),
@@ -147,18 +127,6 @@ DATABASES = {
     }
 }
 
-=======
-        'NAME': os.environ.get('PGDATABASE', 'default_db_name'),  # Your database name
-        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'your_password'),
-        'HOST': os.environ.get('PGHOST', 'localhost'),
-        'PORT': os.environ.get('PGPORT', '5432'),
-    }
-}
-
-#pg_dump -U testuser -h localhost -p 5432 test_project_db > database_dump.sql
-
->>>>>>> Stashed changes
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
