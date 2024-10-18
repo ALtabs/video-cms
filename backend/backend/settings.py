@@ -30,7 +30,12 @@ SECRET_KEY = 'django-insecure-zv9y$)r9l7tum+@mbas0am(!n0tppjg!%eh+irtogh*akv9%e@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['video-cms-1.onrender.com', 'angular-cms-omega.vercel.app/']
+ALLOWED_HOSTS = [
+    'video-cms-1.onrender.com',
+    'angular-cms-omega.vercel.app',
+    '127.0.0.1',
+    'localhost',
+    ]
 
 # Insert Applications you want to be documented
 DOCUMENTED_APPS = [
