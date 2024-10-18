@@ -75,11 +75,15 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:4200', 
+    'http://localhost:4200',
+    "https://video-cms-1.onrender.com",
+    "angular-cms-omega.vercel.app"
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200", 
+    "https://video-cms-1.onrender.com",
+    "angular-cms-omega.vercel.app"
 ]
 
 ROOT_URLCONF = 'backend.urls'
