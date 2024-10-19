@@ -81,3 +81,8 @@ input.form-control:focus {
   background-color: #848586; /* Darker blue on hover */
 }
 
+.error-message {
+  color: red; /* Change to your preferred error color */
+  margin: 10px;
+}
+

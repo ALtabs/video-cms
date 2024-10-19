@@ -16,6 +16,10 @@
       </div>
     </div>
 
+    <div *ngIf="loginError" class="error-message">
+      <small>{{ loginError }}</small>
+    </div>
+
     <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
     <button type="button" class="btn btn-link" (click)="navigateToSignup()">Sign up</button>
   </form>

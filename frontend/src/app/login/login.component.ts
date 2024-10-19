@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loginError: string | null = null;
 
 
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
@@ -37,7 +38,7 @@ export class LoginComponent {
                     this.router.navigate(['/home']);
                 },
                 (error) => {
-                    console.error('Login failed', error);
+                  this.loginError = 'Login failed. Please try again.';
                 }
             );
 
