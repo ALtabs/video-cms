@@ -36,16 +36,19 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
     'https://cms-backend-sp1z.onrender.com',
     'http://127.0.0.1:8080'
+    'https://cms-frontend-0iux.onrender.com'
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
     'https://cms-backend-sp1z.onrender.com',
-    'http://127.0.0.1:8080'
+    'http://127.0.0.1:8080',
+    'https://cms-frontend-0iux.onrender.com'
 ]
 
 ALLOWED_HOSTS = [
     'cms-backend-sp1z.onrender.com',
+    'cms-frontend-0iux.onrender.com'
     '127.0.0.1',
     'localhost',
 ]

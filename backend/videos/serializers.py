@@ -53,6 +53,5 @@ class VideoSerializer(serializers.ModelSerializer):
             instance.video_file_url = video_file_url['video_url']
             instance.thumbnail_url = video_file_url['thumbnail_url']
 
-        # Save the instance
         instance.save()
         return instance
