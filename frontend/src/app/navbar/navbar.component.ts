@@ -15,6 +15,7 @@ export class NavbarComponent {
   signOut() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
+    localStorage.removeItem('user_id');
 
     this.router.navigate(['/login']);
 

@@ -21,6 +21,9 @@ export class AppComponent {
   ) {
     if (this.authService.isTokenExpired()) {
       this.router.navigate(['/login']);
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      localStorage.removeItem('user_id');
     }
   }
 }
