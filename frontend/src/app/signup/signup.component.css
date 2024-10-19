@@ -65,3 +65,9 @@ small.text-danger {
 .btn-link {
   background-color: #6c757d;
 }
+
+.error-message {
+  color: red; /* Change to your preferred error color */
+  margin: 10px;
+}
+

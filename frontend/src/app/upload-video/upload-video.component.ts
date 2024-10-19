@@ -51,15 +51,6 @@ export class UploadVideoComponent {
         console.error('Upload failed', error);
       }
     )
-    // this.http.post(this.apiUrl, formData, { headers })
-    //   .subscribe(
-    //     (response: any) => {
-    //       this.router.navigate(['/home']);
-    //     },
-    //     (error) => {
-    //       console.error('Upload failed', error);
-    //     }
-    //   );
   }
 
   onFileChange(event: any) {

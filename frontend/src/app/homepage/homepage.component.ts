@@ -96,7 +96,6 @@ selectVideo(video: Video) {
   }
 
   deleteVideo(video: Video) {
-    console.log('sss', video);
     const index = this.videos.indexOf(video);
     if (index > -1) {
       this.videos.splice(index, 1);
@@ -105,10 +104,6 @@ selectVideo(video: Video) {
         this.router.navigate(['home']);
       });
     }
-  }
-
-  toggleDropdown(video: Video) {
-    // video.id = !video.id;
   }
 
   extractFileId(url: string): string | null {
