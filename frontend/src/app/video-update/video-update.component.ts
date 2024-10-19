@@ -89,6 +89,6 @@ export class VideoUpdateComponent implements OnInit {
 
   // Navigate back to home on cancel
   navigateToHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 }
