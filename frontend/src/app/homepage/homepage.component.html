@@ -1,41 +1,38 @@
 <app-navbar></app-navbar>
-<div class="homepage">
-  <h1>Video List</h1>
-
-  <div class="video-list">
-    <div *ngFor="let video of videos" class="video-item">
-      <div class="thumbnail-container" (click)="selectVideo(video)">
-        <img [src]="video.thumbnail_url" alt="{{ video.title }}" class="thumbnail" />
-      </div>
-
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" (click)="toggleDropdown(video)">
-          ⋮ <!-- Three dot icon -->
-        </button>
-
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" (click)="editVideo(video)">Edit</a></li>
-          <li><a class="dropdown-item text-danger" (click)="deleteVideo(video)">Delete</a></li>
-        </ul>
-      </div>
-    </div>
+<section>
+  <div *ngIf="!hasVideos" class="alert alert-warning">
+    No videos available. Please upload a video first.
   </div>
-  <section class="video-player">
-    <div *ngIf="selectedVideo">
-      <h2>Now Playing</h2>
-      <iframe
-        *ngIf="selectedVideo" id="my-video" class="video-js"
-        [src]="getEmbedUrl(selectedVideo.video_file_url)"
-        width="940"
-        height="980"
-        allow="autoplay; encrypted-media"
-        frameborder="0">
-      </iframe>
+</section>
+<section *ngIf="hasVideos" class="section">
+  <div class="homepage">
+    <div class="video-list">
+      <div *ngFor="let video of videos" class="video-item">
+        <div class="thumbnail-container" (click)="selectVideo(video)">
+          <img [src]="getEmbedThumbnail(video.thumbnail_url)" alt="{{ video.title }}" class="thumbnail" />
+        </div>
+      </div>
     </div>
-  </section>
-</div>
-
-
-
-
-
+    <section class="video-player">
+      <div *ngIf="selectedVideo">
+        <div style="display: flex;">
+          <h2 style="width: 792px;">Now Playing</h2>
+          <div class="action-buttons">
+            <button class="button btn-update" (click)="editVideo(selectedVideo)">Update</button>
+            <button class="button btn-delete" (click)="deleteVideo(selectedVideo)">Delete</button>
+          </div>
+        </div>
+        <iframe
+          style="width: 1000px; height: 500px;"
+          id="my-video"
+          class="video-js"
+          [src]="getEmbedUrl(selectedVideo.video_file_url)"
+          width="1000"
+          height="500"
+          allow="autoplay; encrypted-media"
+          frameborder="0">
+        </iframe>
+      </div>
+    </section>
+  </div>
+</section>

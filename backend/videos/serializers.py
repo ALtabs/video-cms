@@ -40,3 +40,19 @@ class VideoSerializer(serializers.ModelSerializer):
         validated_data['uploader'] = request.user
 
         return super().create(validated_data)
+    
+    def update(self, instance, validated_data):
+        # Update fields that are provided
+        instance.title = validated_data.get('title', instance.title)
+        instance.description = validated_data.get('description', instance.description)
+
+        # Handle video file upload if provided
+        video_file = self.context['request'].data.get('video_file', None)
+        if video_file:
+            video_file_url = upload_file_to_drive(video_file.name, video_file)
+            instance.video_file_url = video_file_url['video_url']
+            instance.thumbnail_url = video_file_url['thumbnail_url']
+
+        # Save the instance
+        instance.save()
+        return instance

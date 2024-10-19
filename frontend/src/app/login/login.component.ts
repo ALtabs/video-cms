@@ -30,8 +30,10 @@ export class LoginComponent {
       this.http.post('https://cms-backend-sp1z.onrender.com/api/login/', credentials)
             .subscribe(
                 (response: any) => {
+                  console.log('Login successful', response);
                     localStorage.setItem('access_token', response.access);
                     localStorage.setItem('refresh_token', response.refresh);
+                    localStorage.setItem('user_id', response.user_id);
                     this.router.navigate(['/home']);
                 },
                 (error) => {

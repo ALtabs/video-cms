@@ -42,4 +42,8 @@ export class SignupComponent {
       )
     }
   }
+
+  navigateTologin() {
+    this.router.navigate(['/']);
+  }
 }

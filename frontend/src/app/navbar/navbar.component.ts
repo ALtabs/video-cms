@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [RouterModule]
 })
 export class NavbarComponent {
-  // You can add logic for sign out here
+
+  constructor(private router: Router) {}
   signOut() {
-    console.log('Sign out clicked');
-    // Implement your sign out logic here
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+
+    this.router.navigate(['/login']);
+
   }
 }

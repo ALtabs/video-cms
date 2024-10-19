@@ -6,6 +6,7 @@ import { VideoService } from '../services/video.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Video } from '../video.model';
 import videojs from 'video.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -19,8 +20,9 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   videos: Video[] = [];
   selectedVideo: Video | null = null;
   private players: any[] = [];
+  hasVideos: boolean = false;
 
-  constructor(private videoService: VideoService, private sanitizer: DomSanitizer) {}
+  constructor(private videoService: VideoService, private router: Router, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.fetchVideos();
@@ -30,6 +32,7 @@ export class HomepageComponent implements OnInit, AfterViewInit {
     this.videoService.getVideos().subscribe(
       (data: Video[]) => {
         this.videos = data;
+        this.hasVideos = this.videos.length > 0;
       },
       (error) => {
         console.error('Error fetching videos:', error);
@@ -61,33 +64,46 @@ ngOnDestroy() {
   this.players.forEach(player => player.dispose());
 }
 
-  getEmbedUrl(url: string): SafeResourceUrl | null {
+getEmbedUrl(url: string): SafeResourceUrl | null {
     const fileId = this.extractFileId(url);
     if (fileId) {
-        // Use the Google Drive preview link
-        //https://drive.google.com/file/d/1zBRnvb4IQlko7WaRKR2qOu6th4-FgUA5/view?usp=sharing
         const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-        console.log('Embed URL:', embedUrl); // Debugging log
         return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
     }
     console.warn('Invalid URL or file ID not found:', url);
     return null;
 }
 
-  selectVideo(video: Video) {
-    this.selectedVideo = video;
-  }
+getEmbedThumbnail(url: string): SafeResourceUrl | null {
+    const fileId = this.extractFileId(url);
+    if (fileId) {
+        const embedUrl = `https://drive.google.com/thumbnail?id=${fileId}`;
+        return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    }
+    console.warn('Invalid URL or file ID not found:', url);
+    return null;
+}
+
+
+
+selectVideo(video: Video) {
+  this.selectedVideo = video;
+}
+
 
   editVideo(video: Video) {
-    console.log('Edit video:', video);
-    // Logic to edit the video
+    this.router.navigate(['/update', video.id]);
   }
 
   deleteVideo(video: Video) {
-    console.log('Delete video:', video);
+    console.log('sss', video);
     const index = this.videos.indexOf(video);
     if (index > -1) {
-      this.videos.splice(index, 1); // Remove the video from the list
+      this.videos.splice(index, 1);
+      this.videoService.deleteVideo(video.id).subscribe(() => {
+        this.selectedVideo = null;
+        this.router.navigate(['home']);
+      });
     }
   }
 

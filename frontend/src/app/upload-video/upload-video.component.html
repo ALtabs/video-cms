@@ -1,8 +1,9 @@
 <app-navbar></app-navbar>
 <div class="container">
+  <h2>Upload Video</h2>
   <form  [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="username">Username:</label>
+      <label for="username">Title:</label>
       <input formControlName="title" type="text" id="username" placeholder="Title" class="form-control" required />
       <div *ngIf="uploadForm.get('title')?.invalid && (uploadForm.get('title')?.touched || uploadForm.get('title')?.dirty)">
         <small *ngIf="uploadForm.get('title')?.errors?.['required']">Title is required.</small>
@@ -22,7 +23,7 @@
       </div>
     </div>
 
-    <button type="submit">Upload Video</button>
+    <button type="submit" [disabled]="uploadForm.get('file')?.invalid">Upload Video</button>
   </form>
 </div>
 
