@@ -31,14 +31,30 @@ SECRET_KEY = 'django-insecure-zv9y$)r9l7tum+@mbas0am(!n0tppjg!%eh+irtogh*akv9%e@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:4200',
+    'https://video-cms-production.up.railway.app',
+    'https://video-cms-1.onrender.com',
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app',
+    'https://video-cms.onrender.com'
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+    'https://video-cms-production.up.railway.app',
+    'https://video-cms-1.onrender.com',
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app',
+    'https://video-cms.onrender.com'
+]
+
 ALLOWED_HOSTS = [
     'video-cms-1.onrender.com',
-    'video-cms.onrender.com'
+    'video-cms.onrender.com',
     'angular-cms-omega.vercel.app',
     '127.0.0.1',
     'localhost',
     'video-cms-production.up.railway.app'
-    ]
+]
 
 # Insert Applications you want to be documented
 DOCUMENTED_APPS = [
@@ -75,22 +91,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:4200',
-    'https://video-cms-production.up.railway.app',
-    'https://video-cms-1.onrender.com',
-    'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
-    'https://video-cms.onrender.com'
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
-    'https://video-cms-production.up.railway.app',
-    'https://video-cms-1.onrender.com',
-    'https://angular-ocuztdzt0-almahsols-projects.vercel.app',
-    'https://video-cms.onrender.com'
 ]
 
 ROOT_URLCONF = 'backend.urls'
