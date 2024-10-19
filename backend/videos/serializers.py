@@ -16,16 +16,6 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
-
-class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField()
-    password = serializers.CharField()
-
-    def validate(self, data):
-        user = authenticate(**data)
-        if user is None:
-            raise serializers.ValidationError("Invalid username or password.")
-        return data
  
 class VideoSerializer(serializers.ModelSerializer):
     uploader_username = serializers.CharField(source='uploader.username', read_only=True)

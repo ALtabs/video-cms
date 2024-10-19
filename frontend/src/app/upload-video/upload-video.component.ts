@@ -1,9 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NavbarComponent } from '../navbar/navbar.component';
-import { HttpClient } from '@angular/common/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-upload-video',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 })
 export class UploadVideoComponent {
   uploadForm: FormGroup;
+  private apiUrl = 'https://cms-backend-sp1z.onrender.com/api/videos/';
 
   constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
     this.uploadForm = this.fb.group({
@@ -28,24 +30,26 @@ export class UploadVideoComponent {
       return;
     }
 
+    const token = localStorage.getItem('access_token');
+    const headers = { Authorization: `Bearer ${token}` };
+
     const formData = new FormData();
     formData.append('title', this.uploadForm.value.title);
     formData.append('description', this.uploadForm.value.description);
     formData.append('video_file', this.uploadForm.value.file);
 
-    this.http.post('https://video-cms.onrender.com/api/videos/', formData)
-        .subscribe(
-            (response: any) => {
-                this.router.navigate(['/login']);
-            },
-            (error) => {
-                console.error('Signup failed', error);
-            }
-
-    )
+    this.http.post(this.apiUrl, formData, { headers })
+      .subscribe(
+        (response: any) => {
+          console.log('Video uploaded successfully:', response);
+          this.router.navigate(['/home']); // Redirect after success
+        },
+        (error) => {
+          console.error('Upload failed', error);
+        }
+      );
   }
 
-  // Method to capture file input
   onFileChange(event: any) {
     const file = event.target.files[0];
     this.uploadForm.patchValue({ file });

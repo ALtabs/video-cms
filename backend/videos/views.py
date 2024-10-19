@@ -13,7 +13,6 @@ from django.contrib.auth.models import User
 
 from .serializers import UserSerializer, VideoSerializer
 from .models import Video
-from .serializers import LoginSerializer
 
 
 class VideoViewSet(viewsets.ModelViewSet):
