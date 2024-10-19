@@ -1,0 +1,11 @@
+{
+  "/proxy": {
+    "target": "https://drive.google.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/proxy": ""
+    }
+  }
+}

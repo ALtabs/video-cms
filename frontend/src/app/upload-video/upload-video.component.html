@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <form  [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input formControlName="title" type="text" id="username" placeholder="Title" class="form-control" required />
+      <div *ngIf="uploadForm.get('title')?.invalid && (uploadForm.get('title')?.touched || uploadForm.get('title')?.dirty)">
+        <small *ngIf="uploadForm.get('title')?.errors?.['required']">Title is required.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description(Optional):</label>
+      <textarea id="description" formControlName="description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Upload Video</label>
+      <input type="file" (change)="onFileChange($event)" accept="video/*" class="form-control"/>
+      <div *ngIf="uploadForm.get('file')?.invalid && (uploadForm.get('file')?.touched || uploadForm.get('file')?.dirty)">
+        <small *ngIf="uploadForm.get('file')?.errors?.['required']">Video file is required.</small>
+      </div>
+    </div>
+
+    <button type="submit">Upload Video</button>
+  </form>
+</div>
+

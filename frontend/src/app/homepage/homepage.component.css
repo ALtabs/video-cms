@@ -1,0 +1,61 @@
+.homepage {
+  display: flex;
+  padding: 20px;
+}
+
+.video-list {
+  flex: 1;
+  margin-right: 20px;
+  overflow-y: auto;
+  max-height: 80vh; /* Limit the height of the list */
+}
+
+.video-item {
+  position: relative;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.thumbnail-container {
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.thumbnail {
+  width: 100%; /* Make thumbnail responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Optional: Rounded corners for images */
+}
+
+.video-player {
+  flex: 2;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.video-item {
+  position: relative; /* Ensure this is relative for absolute positioning of dropdown */
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.dropdown {
+  position: absolute; /* Position the dropdown absolutely */
+  right: 10px; /* Align dropdown to the right */
+  top: 10px; /* Adjust position to fit within the item */
+  z-index: 1000; /* Higher z-index to ensure it is above other elements */
+}
+
+.dropdown-menu {
+  background-color: white; /* Optional: set background color */
+  border: 1px solid #ccc; /* Optional: add border */
+  border-radius: 5px; /* Optional: add rounded corners */
+}
+
