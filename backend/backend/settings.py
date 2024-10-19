@@ -33,6 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'video-cms-1.onrender.com',
+    'video-cms.onrender.com'
     'angular-cms-omega.vercel.app',
     '127.0.0.1',
     'localhost',
@@ -81,13 +82,15 @@ CORS_ORIGIN_WHITELIST = [
     'https://video-cms-production.up.railway.app',
     'https://video-cms-1.onrender.com',
     'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
+    'https://video-cms.onrender.com'
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
     'https://video-cms-production.up.railway.app',
     'https://video-cms-1.onrender.com',
-    'https://angular-ocuztdzt0-almahsols-projects.vercel.app'
+    'https://angular-ocuztdzt0-almahsols-projects.vercel.app',
+    'https://video-cms.onrender.com'
 ]
 
 ROOT_URLCONF = 'backend.urls'
