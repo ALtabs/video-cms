@@ -27,7 +27,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
       const credentials = { username: loginData.username, password: loginData.password };
-      this.http.post('https://video-cms-1.onrender.com/api/login/', credentials)
+      this.http.post('https://video-cms.onrender.com/api/login/', credentials)
             .subscribe(
                 (response: any) => {
                     localStorage.setItem('access_token', response.access);

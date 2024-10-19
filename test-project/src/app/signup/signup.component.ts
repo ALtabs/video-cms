@@ -30,7 +30,7 @@ export class SignupComponent {
         email: signupData.email,
         password: signupData.password
       };
-      this.http.post('https://video-cms-1.onrender.com/api/register/', credentials)
+      this.http.post('https://video-cms.onrender.com/api/register/', credentials)
             .subscribe(
                 (response: any) => {
                     this.router.navigate(['/login']);
