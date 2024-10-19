@@ -61,3 +61,8 @@ class LoginView(generics.GenericAPIView):
                 'user_id': user.id
             })
         return Response({"detail": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class KeepAliveView(View):
+    def get(self, request, *args, **kwargs):
+        return JsonResponse({'status': 'ok'})
